@@ -1,9 +1,10 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND, HTTP_500_INTERNAL_SERVER_ERROR
+from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND, HTTP_500_INTERNAL_SERVER_ERROR, HTTP_201_CREATED, \
+    HTTP_400_BAD_REQUEST
 
 from feed.models import Post
-from feed.serializers import GetPostsSerializer, GetPostSerializer
+from feed.serializers import GetPostsSerializer, GetPostSerializer, MakePostSerializer
 
 
 @api_view(['GET'])
@@ -33,3 +34,14 @@ def get_post(request, id):
         return Response({
             'message': 'Post not exist'
         }, HTTP_404_NOT_FOUND)
+
+
+@api_view(['POST'])
+def make_post(request):
+    serializer = MakePostSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=HTTP_201_CREATED)
+    else:
+        return Response(status=HTTP_400_BAD_REQUEST)
