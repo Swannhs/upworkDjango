@@ -28,3 +28,15 @@ class GetPostSerializer(serializers.ModelSerializer):
             'reviews',
             'vote'
         ]
+
+
+class MakePostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = [
+            'title',
+            'price',
+            'tags',
+            'short_description',
+            'description'
+        ]
