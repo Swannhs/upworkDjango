@@ -76,10 +76,15 @@ WSGI_APPLICATION = 'upworkDjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django',
+        'USER': 'swann',
+        'PASSWORD': 'swann007',
+        'HOST': 'postgresql-48385-0.cloudclusters.net',
+        'PORT': '18703',
     }
 }
+
 
 
 # Password validation
