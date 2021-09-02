@@ -14,3 +14,17 @@ class GetPostsSerializer(serializers.ModelSerializer):
             'payment',
             'reviews'
         ]
+
+
+class GetPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = [
+            'id',
+            'title',
+            'price',
+            'description',
+            'payment',
+            'reviews',
+            'vote'
+        ]
