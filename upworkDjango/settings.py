@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'feed.apps.FeedConfig',
     'proposal.apps.ProposalConfig',
+    'freelancer.apps.FreelancerConfig',
 ]
 
 MIDDLEWARE = [
