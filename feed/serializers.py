@@ -1,13 +1,17 @@
 from rest_framework import serializers
 
 from feed.models import Post
+from freelancer.serializers import FreelancerSerializer
 
 
 class GetPostsSerializer(serializers.ModelSerializer):
+    user = FreelancerSerializer(read_only=True)
+
     class Meta:
         model = Post
         fields = [
             'id',
+            'user',
             'title',
             'price',
             'short_description',
