@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 class Post(models.Model):
     id = models.AutoField(primary_key=True, editable=False)
+    user = models.ForeignKey('auth.User', related_name='posts', on_delete=models.CASCADE)
     title = models.CharField(max_length=300)
     price = models.DecimalField(max_digits=7, decimal_places=2, null=True, blank=True)
     tags = models.CharField(max_length=100, null=True, blank=True)
