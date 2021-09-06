@@ -38,10 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'knox',
     'feed.apps.FeedConfig',
     'proposal.apps.ProposalConfig',
     'freelancer.apps.FreelancerConfig',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,10 +91,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django',
-        'USER': 'swann',
+        'USER': 'postgres',
         'PASSWORD': 'swann007',
-        'HOST': 'postgresql-48385-0.cloudclusters.net',
-        'PORT': '18703',
+        # 'HOST': 'postgresql-48385-0.cloudclusters.net',
+        'HOST': 'localhost',
+        # 'PORT': '18703',
+        'PORT': '5432',
     }
 }
 
